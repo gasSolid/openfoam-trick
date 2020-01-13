@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
 	FILE *fout = fopen(fileName, "w");
 
 	forAll(UszOut,hi){
-		scalar hValue = (hi+0.5)*gridLength;
+		scalar hValue = (hi+0.5)*gridLength;//z方向网格中心坐标
 		fprintf(fout, "%f\t %f\t %f\t %f\n",hValue,solidfractionOut[hi],pOut[hi],UszOut[hi]);//\t为制表符 \n为回车符
 		//Info<< (hi+0.5)*gridLength <<", "<<solidfractionOut[hi]<< ", "<<pOut[hi]<<", "<<UszOut[hi]<<endl;
 	}
