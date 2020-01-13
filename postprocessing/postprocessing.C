@@ -142,8 +142,8 @@ int main(int argc, char *argv[])
 	sprintf(fileName, "postprocessing.out");//输出到文件
 	FILE *fout = fopen(fileName, "w");
 
-	forAll(UszOut,hi){
-		scalar hValue = (hi+0.5)*gridLength;//z方向网格中心坐标
+	forAll(solidfractionOut,hi){
+		scalar hValue = (hi+0.5)*gridLength;
 		fprintf(fout, "%f\t %f\t %f\t %f\n",hValue,solidfractionOut[hi],pOut[hi],UszOut[hi]);//\t为制表符 \n为回车符
 		//Info<< (hi+0.5)*gridLength <<", "<<solidfractionOut[hi]<< ", "<<pOut[hi]<<", "<<UszOut[hi]<<endl;
 	}
