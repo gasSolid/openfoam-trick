@@ -1,0 +1,116 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// version 1-3
+
+solvers
+{
+    p
+    {
+        solver          PCG;
+				preconditioner  DIC;
+	   // solver     GAMG;
+	   // smoother   DIC;
+        tolerance       1e-6;
+        relTol          0.05;
+				maxIter		10000;
+    }
+
+    pFinal
+    {
+        $p;
+        tolerance       1e-7;
+        relTol          0.00;
+    }
+
+    U
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-6;
+        //relTol          0.001;
+        relTol          0.0;
+	    maxIter		100;
+    }
+
+    k
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-6;
+        relTol          0.001;
+    }
+
+    epsilon
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-6;
+        relTol          0.001;
+    }
+
+    R
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-6;
+        relTol          0;
+    }
+
+    nuTilda
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-6;
+        relTol          0.01;
+    }
+
+    //add T
+/*
+    T
+    {
+	solver          BICCG;
+        preconditioner  DILU;
+        tolerance       1e-7;
+        relTol          0;
+     };
+*/
+
+    T 
+    {
+       solver           BICCG;
+       preconditioner   DILU;
+       tolerance        1e-7;
+       relTol           0;
+    };
+
+    Yi
+    {
+        $U;
+    };
+}
+
+PISO
+{
+    nCorrectors     3;
+    nNonOrthogonalCorrectors 0;
+    pRefCell        0;
+    pRefValue       0;
+    momentumPredictor       yes;
+}
+
+
+// ************************************************************************* //

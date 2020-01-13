@@ -1,0 +1,6 @@
+本后处理APP只适用于均匀网格长度，Cartesian网格
+具体运行过程为：
+1. 在算例文件下运行 reconstructPar -time 10.0 (假设想后处理的时刻为10s)
+2. 将reconstructPar后时刻文件夹（10.0/） constant/ system/拷贝到后处理postprocessing/文件夹下
+3. 修改postprocessing/system 文件夹中startTime为想要后处理的时刻（10.0s）
+4. ./run.sh出结果
