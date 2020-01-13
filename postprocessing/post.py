@@ -30,4 +30,4 @@ plt.plot(xData, yData, color='r', linestyle='-', marker='o', label='Present stud
 plt.legend(loc='upper left')
 #plt.ylim(100,190)
 
-plt.savefig('solidfraction.png', format='png')
+plt.savefig('solidfraction.png', format='png', dpi=300)
