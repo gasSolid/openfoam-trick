@@ -1,0 +1,12 @@
+###2020/09/15 17:02:42 
+1.cut_data_Flu.sh  --access data from *.vtk file
+
+2. all.data --save all data needed to calculate Probability density distribution(PDF)
+
+3.post_Flu.py   --calc PDF && plot
+
+How to use?
+
+-> modefy cut_data_Flu.sh file if necessary
+
+->./run_Flu.sh
